@@ -1,0 +1,21 @@
+{% extends 'home/layout.html.twig' %}
+
+{% block title %}
+  {{ parent() }} -Suppression
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }} 
+	<link rel="stylesheet" type="text/css"
+	href="{{asset('css/supprimer.css')}}">
+	
+{% endblock %}
+
+{% block  titre %}
+{{ parent() | upper }} -Supprimer un produit
+{% endblock %}
+
+{% block home_body %}
+<h1>Bonjour</h1>
+<p> Vous etes sur le point de supprimer le produit ayant l'id {{id}}</p>
+{% endblock %}

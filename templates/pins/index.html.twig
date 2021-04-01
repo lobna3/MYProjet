@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panterest{% endblock %}
+	{% block stylesheets %}
+	{{ parent() }} 
+
+	
+{% endblock %}
+
+	
+{% block body %}
+	
+	{% for type, messages in app.flashes%}
+	{% for message in messages%}
+	<div class="alert  alert-{{ type }}"  role="alert">
+		{{message}}
+	</div>
+{% endfor %}
+{% endfor %}
+
+<h1 class="mb-4 text-center text-muted"> {{ pluralize(pins |length ,'Pin') }} Pins </h1>
+
+
+         {% for row in pins|batch(3) %}
+          <div class="row mb-5">
+           {% for pin in row %}
+          	<div class="col-md-4">
+       		<article class=" pin bg-white rounded shadow">
+
+
+             {% if pin.image is not null %}
+   
+       <a href={{ path ('show',{id : pin.id })  }}><img src="{{ pin.image.url}}"  class="d-block w-100  rounded-top"></a>
+    
+             	
+	         
+            {% endif %}
+             <h2 class="h5 pl-3 pt-3" ><a href={{ path ('show',{id : pin.id })  }} class="text-secondary text-decoration-none"> {{pin.title}} </a></h2>
+             <p class="pl-3 pb-3 text-muted"><small>Submitted by  user with id : {{ pin.user.id }}  </small></p>
+          <!--  <p>{{ pin.description }}</p> -->
+               </article>
+            	</div>
+              {% endfor %}
+	            </div>
+             {% endfor %}
+             {% endblock %}
+

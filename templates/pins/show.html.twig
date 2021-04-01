@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title pin.title %}
+
+{% block body %}
+
+                 
+                  <div class="row">
+                 <div class="col-md-6  mx-auto" >
+
+                  
+                    <article class=" pin bg-white rounded shadow">
+                      <div class="mw-100 overflow-hidden">
+             {% if pin.image is not null %}
+              
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                       <div class="carousel-item active">
+                   <a href={{ path ('show',{id : pin.id })  }}><img src="{{ pin.image.url}}"  class="d-block w-100  rounded-top"></a>
+                     </div>
+                   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                 </a>
+                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                                   </a>
+                                </div>
+            {% endif %}
+          </div>
+             <h2 class="h5 pl-3 pt-3" ><a href={{ path ('show',{id : pin.id })  }} class="text-secondary text-decoration-none"> {{pin.title}} </a></h2>
+             <p class="pl-3 pb-3 text-muted"><small>{{ pin.description }}</small></p>
+               <p> </p>
+
+                <div class="pl-3 pb-3">
+                  <a href={{path ('edit',{id : pin.id }) }} class="btn btn-sm btn-outline-secondary"> Edit </a>
+                       <a href={{path ('delete',{id : pin.id }) }} class="btn btn-sm btn-outline-secondary"> Delete </a>
+                 </div>
+               </article>  
+                              
+                  </div>
+                  </div>
+            
+ 
+ 	
+   
+    
+
+
+{% endblock %}

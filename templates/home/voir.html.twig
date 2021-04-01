@@ -1,0 +1,38 @@
+{% extends 'home/layout.html.twig' %}
+
+{% block title %}
+  {{ parent() }} -voir
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }} 
+	<link rel="stylesheet" type="text/css"
+	href="{{asset('css/supprimer.css')}}">
+	
+{% endblock %}
+
+{% block  titre %}
+{{ parent() | upper }} -voir un produit
+{% endblock %}
+
+{% block home_body %}
+	{% for message in app.flashes('notice')%}
+	<div class="flash-info" style="color:red">
+		{{message}}
+	</div>
+{% endfor %}
+
+<h1>Bonjour</h1>
+<h1> Détails du  produit ayant l'id: {{prod.id}}</h1>
+<h2> Intitilé: {{prod.title}}</h2>
+
+<h2> Société: {{prod.company}}</h2>
+<h2> Description:{{prod.description}}</h2>
+<h2> Email: {{prod.email}}</h2>
+
+
+{% if prod.image is not null %}
+	<h2>Image </h2>
+	<img src="{{ prod.image.url }}" alt="{{ prod.image.alt }}"  height="100">
+{% endif %}
+{% endblock %}

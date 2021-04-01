@@ -1,0 +1,23 @@
+{% extends 'home/layout.html.twig' %}
+
+{% block title %}
+  {{ parent() }} -Ajout
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }} 
+	<link rel="stylesheet" type="text/css"
+	href="{{asset('css/supprimer.css')}}">
+	
+{% endblock %}
+
+{% block  titre %}
+{{ parent() | upper }} -Ajouter un produit
+{% endblock %}
+
+{% block home_body %}
+	<h1> Bonjour </h1>
+
+{{ include("home/form.html.twig") }}
+{% endblock %}
+

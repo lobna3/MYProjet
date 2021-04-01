@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} -Produit {% endblock %}
+	{% block stylesheets %}
+	{{ parent() }} 
+	<link rel="stylesheet" type="text/css"
+	href="{{asset('css/app.css')}}">
+	
+{% endblock %}
+
+{% block  titre %} {{ parent() | upper }} -Produit {% endblock %}
+
+
+{% block body %}
+ <div id="menu" class="col-md-3">
+
+  {{render(controller('App\\Controller\\HomeController::menu'))}}
+ </div>
+
+ <div id="content" class="col-md-9">
+ 	<p>
+ 		Vous etes   dans la partie produit
+ 	</p>
+ 	{% block home_body %}
+ 	{% endblock %}
+ </div>
+{% endblock %}
